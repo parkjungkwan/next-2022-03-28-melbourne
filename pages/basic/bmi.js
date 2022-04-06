@@ -24,7 +24,7 @@ export default function Bmi() {
         })
         .catch(err => alert(err))
     }
-    return (<div>
+    return (<>
         <form action="" onSubmit={handleSubmit} >
             <h1>BMI</h1>
             <div>
@@ -39,6 +39,6 @@ export default function Bmi() {
                 <input type="submit" value="BMI 체크" /><br />
             </div>
         </form>
-        <div> 결과 : <span id="result-span"></span></div>
-    </div>)
+        <div> 결과 : <span id="result-span"></span></div></>
+    )
 }

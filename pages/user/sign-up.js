@@ -10,25 +10,28 @@ export default function SignUp(){
     }
     const handleSubmit = e => {
         e.preventDefault()
-        axios.post('',inputs).then(res=>{}).catch(err=>{})
+        alert(`등록할 회원정보 : ${JSON.stringify(inputs)}`)
+        axios.post('http://localhost:5000/api/user/signup',inputs).then(res=>{
+            alert(`결과: ${res.data.result}`)
+        }).catch(err=>{alert(err)})
     }
 
 
     return (<><h1>회원가입폼</h1>
-    <form >
+    <form onSubmit={handleSubmit} >
   
     <div>
     <label><b>사용자 ID</b></label>
-    <input type="text" name='username' /><br />
+    <input type="text" name='username' onChange={handleChange} /><br />
 
     <label htmlFor=""><b>비밀번호</b></label>
-    <input type="text" name='password'/><br />
+    <input type="text" name='password'onChange={handleChange}/><br />
 
     <label><b>이름</b></label>
-    <input type="text" name='name' /><br />
+    <input type="text" name='name' onChange={handleChange}/><br />
 
     <label><b>전화번호</b></label>
-    <input type="text" name='telephone' /><br />
+    <input type="text" name='telephone' onChange={handleChange}/><br />
 
     <button >전 송</button><button>취 소</button><br />
     </div>
