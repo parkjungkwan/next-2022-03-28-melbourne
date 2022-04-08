@@ -8,8 +8,8 @@ const Table = ({ columns, colspan, data}) => {
         <thead>
             {/**<th key={column} className={tableStyles.td}>{column}</th> */}
             <tr className={tableStyles.tr}  >
-            {columns.map((column) => (
-                  <th className={tableStyles.td}>{column}</th>
+            {columns.map((column, index) => (
+                  <th className={tableStyles.td} key={index}>{column}</th>
             ))}
           </tr>
         </thead>
