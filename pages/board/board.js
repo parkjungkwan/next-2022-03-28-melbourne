@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import style from "board/style/board-form.module.css"
-import axios from 'axios'
-
+import { useDispatch } from 'react-redux'
+import { addBoard } from '../../redux/reducers/board.reducer'
 export default function Board(){
-
+    const dispatch = useDispatch()
     const [inputs, setInputs] = useState({})
 
     const handleChange = e => {
@@ -11,27 +11,22 @@ export default function Board(){
        setInputs({...inputs, [name]: value})
     }
 
-    const handleClick = e => {
-        e.preventDefault()
-        alert(`등록할 게시글 : ${JSON.stringify(inputs)}`)
-        axios.post('http://localhost:5000/api/board/write', inputs)
-        .then(res => {
-            alert(`결과: ${res.data.result}`)
-        })
-        .catch(err => alert(err))
-        
-    }
+   
     return (<>
         <h1>게시글 등록</h1>
         <div className={style.container}>
-            <htmlForm action="">
+            <form onSubmit={e => {
+                e.preventDefault()
+                
+                if(inputs) dispatch(addBoard(inputs))
+            }}>
             <div className={style.row}>
                 <div className={style.col25}>
-                <label className={style.label} htmlFor="passengerId">게시글 작성자 ID</label>
+                <label className={style.label} htmlFor="passengerId">글 제목</label>
                 </div>
                 <div className={style.col75}>
                 <input type="text" className={style.inputText} onChange={handleChange}
-                id="passengerId" name="passengerId" placeholder="게시글 작성자 ID 입력"/>
+                id="title" name="title" placeholder="글 제목 입력"/>
                 </div>
             </div>
             <div className={style.row}>
@@ -67,10 +62,10 @@ export default function Board(){
             <br/>
             
             <div className={style.row}>
-                <input type="submit" className={style.inputSubmit} onClick={handleClick} 
+                <input type="submit" className={style.inputSubmit} 
                 value="Submit"/>
             </div>
-            </htmlForm>
+            </form>
             </div>
     </>)
 }
