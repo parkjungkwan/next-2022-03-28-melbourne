@@ -15,7 +15,7 @@ import Image from 'next/image'
 // import './styles/UserLayout.scss'
 // import "./styles/UserRegister.scss"
 // import { CheckList } from '..';
-import { joinRequest } from '../../redux/reducers/user.reducer';
+
 
 const schema = yup.object().shape({
   username: yup.string().required('사용자 ID를 입력하시오'),
@@ -154,16 +154,16 @@ export default function Join() {
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                   <Controller
-                    name="phone"
+                    name="email"
                     control={control}
                     render={({ field }) => (
                       <TextField
                         {...field}
                         className="mb-16"
-                        label="Phone"
+                        label="email"
                         type="text"
-                        error={!!errors.phone}
-                        helperText={errors?.phone?.message}
+                        error={!!errors.email}
+                        helperText={errors?.email?.message}
                         variant="outlined"
                         required
                         fullWidth
@@ -287,9 +287,6 @@ export default function Join() {
             </div>
           </motion.div>
         </div>
-        {/* <div style={{marginTop: "-442px"}}>
-        <CheckList/>
-        </div> */}
     </>
   );
 }
