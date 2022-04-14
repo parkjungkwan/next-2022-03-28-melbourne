@@ -2,18 +2,20 @@
   border-collapse: separate;
   border-spacing: 1.5px;
   text-align: center;
-  line-height: 1.5;
-  margin: 10px 10px;
-  width: 600px;
+  line-height: 2;
+  margin: 0.3px 0.3px;
+  width: auto;
   table-layout:fixed;
   word-break : break-all ;
   height : auto;
   }
   .td {
-    border:1px solid rgb(181, 78, 150);
+    width: 1000px;
+    border:1px solid rgb(220, 153, 200);
   }
   .tr {
-    width: 160px;
+    width: 300px;
+    height : auto;
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
@@ -21,7 +23,7 @@
     background: #F3F6F7;
   }
   .th {
-    width: 160px;
+    width: 300px;
     padding: 10px;
     font-weight: bold;
     vertical-align: top;

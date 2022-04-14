@@ -8,7 +8,7 @@ const Table = ({ columns, colspan, data}) => {
         <thead>
             <tr className={tableStyles.tr}  >
             {columns.map((column, index) => (
-                  <th className={tableStyles.td} key={index}>{column}</th>
+                  <th key={index} className={tableStyles.th}>{column}</th>
             ))}
           </tr>
         </thead>
