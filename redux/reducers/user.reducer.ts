@@ -1,5 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit"
 
+export interface JoinPayload{
+    data:{
+        user: {
+            
+        }
+    }
+}
+
 
 const initialState = {
     userLoading: false,
