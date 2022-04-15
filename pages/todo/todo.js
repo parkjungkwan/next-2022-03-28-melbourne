@@ -1,16 +1,23 @@
 import React, {useState} from 'react'
 import { useDispatch } from 'react-redux'
 import tableStyles from '../common/styles/table.module.css'
-import { addTask } from '../../redux/reducers/todoReducer.ts'
+import { todoActions } from '../../redux/reducers/todoReducer.ts'
 export default function AddTodo() {
-    const [value, setValue] = useState('')
+    const [todo, setTodo] = useState({userid: '', task:'', completed:''})
     const [data, setData] = useState([])
     const dispatch = useDispatch()
+    const handleChange = e =>{
+      e.preventDefault()
+      const{name, value} = e.target;
+      setTodo({...todo, [name]: value})
+    }
   return (
       <form onSubmit={ e => {
           e.preventDefault()
-          alert('value ?'+value)
-          if(value) dispatch(addTask({task: value}))
+          dispatch(todoActions.taskRequest({todo}))
+          setTodo({
+            userid: '', task: '', completed: ''
+          })
       }}>
         <table className={tableStyles.table}>
         <thead>
@@ -28,10 +35,7 @@ export default function AddTodo() {
           className="input input__lg"
           name="text"
           autoComplete="off"
-          onChange={ e => {
-              e.preventDefault()
-                setValue(e.target.value)
-          }}
+          onChange={handleChange}
         />
         <button type="submit" style={{marginLeft:"20px"}}  className="btn btn__primary btn__lg">
           Add
