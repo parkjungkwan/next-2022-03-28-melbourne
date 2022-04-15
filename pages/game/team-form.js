@@ -1,4 +1,4 @@
-import style from "board/style/board-form.module.css"
+import tableStyles from '../common/styles/table.module.css'
 
 export default function TeamForm(){
     const handleSubmit = e => {
