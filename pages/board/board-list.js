@@ -2,48 +2,38 @@ import Head from "next/head"
 import tableStyles from "../common/styles/table.module.css"
 import { useEffect ,useState} from "react"
 import axios from "axios"
-const Table = ({columns, colspan, data}) => {
-    return(
-        <table className={tableStyles.table}>
-            <thead>
-            <tr className={tableStyles.tr}>
-                {columns.map((column) => (
-                <th key={column} className={tableStyles.th}>{column}</th>
-                ))}
-            </tr>
-            </thead>
-            <tbody>
-                    {data.length == 0 ? <tr className={tableStyles.tr}>
-                    <td colSpan={colspan} className={tableStyles.td}>게시글 없음</td>
-                    </tr>
-                    :data.map((board)=> (
-                        <tr className={tableStyles.tr} key={board.passengerId}>
-                            <td className={tableStyles.td}>{board.passengerId}</td>
-                            <td className={tableStyles.td}>{board.name}</td>
-                            <td className={tableStyles.td}>{board.teamId}</td>
-                            <td className={tableStyles.td}>{board.subject}</td>
-                        </tr>
-                    ))}
-            </tbody>
-        </table>
-    )
-}
+
 export default function BoardList(){
-    const columns = ["passengerId", "name", "teamId", "subject"]
+    const columns = ["글번호", "제목", "작성자", "주제"]
     const [data, setData] = useState([])
-    const count = data.length
     useEffect(()=>{
             axios.get('http://localhost:5000/api/board/list').then(res=>{
                 setData(res.data.boards)
         }).catch(err=>{})
     }, [])
-    return(<>
-        <Head>
-        <title>보드 리스트</title>
-        </Head>
-        <h1>보드 리스트</h1>
-        <div className={tableStyles.td}>
-        <Table columns={columns} colspan={4} data={data}/>
-        </div>
-        </>)
+    return(
+        <table className={tableStyles.table}>
+            <thead>
+                <tr><th colSpan={4}><h2>게시판</h2></th></tr>
+            </thead>
+            <tbody>
+            <tr >
+                {columns.map((column) => (
+                <td key={column} >{column}</td>
+                ))}
+            </tr>
+                    {data.length == 0 ? <tr >
+                    <td colSpan={4} >게시글 없음</td>
+                    </tr>
+                    :data.map((board)=> (
+                        <tr key={board.passengerId}>
+                            <td >{board.passengerId}</td>
+                            <td >{board.name}</td>
+                            <td >{board.teamId}</td>
+                            <td >{board.subject}</td>
+                        </tr>
+                    ))}
+            </tbody>
+        </table>
+    )
 }
