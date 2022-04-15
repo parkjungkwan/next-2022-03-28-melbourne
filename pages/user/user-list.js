@@ -6,28 +6,28 @@ const Table = ({ columns, colspan, data}) => {
     return (
       <table className={tableStyles.table}>
         <thead>
-            <tr className={tableStyles.tr}  >
+            <tr>
             {columns.map((column, index) => (
-                  <th key={index} className={tableStyles.th}>{column}</th>
+                  <th key={index} >{column}</th>
             ))}
           </tr>
         </thead>
         <tbody>
-                { data.length == 0  ?<tr className={tableStyles.tr}>
-                                      <td colSpan={colspan} className={tableStyles.td}>데이터가 없습니다</td>
+                { data.length == 0  ?<tr >
+                                      <td colSpan={colspan} >데이터가 없습니다</td>
                                       </tr>
                 :data.map((user) => (
-                <tr className={tableStyles.tr}  key={user.username} >
-                  <td className={tableStyles.td}>
+                <tr key={user.username} >
+                  <td >
                     <Link href={{pathname:`/user/[username]`,
                                 query:{selectedUser: 'test'}}} as={`/user/${user.username}`}>
                       <a>{user.username}</a>
                     </Link>
                     
                   </td>
-                  <td className={tableStyles.td}>{user.password}</td>
-                  <td className={tableStyles.td}>{user.name}</td>
-                  <td className={tableStyles.td}>{user.telephone}</td>
+                  <td >{user.password}</td>
+                  <td >{user.name}</td>
+                  <td >{user.telephone}</td>
                 </tr>
             ))}
             
@@ -48,7 +48,7 @@ export default function UserList(){
     return(<>
         <h1>사용자 목록</h1>  
         
-        <div className={tableStyles.td}>
+        <div >
         <Table columns={columns} colspan={6} data={data}/>
         </div>
         </>)
