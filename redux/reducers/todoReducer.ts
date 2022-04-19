@@ -22,9 +22,10 @@ const todoSlice = createSlice({
     name: 'todos',
     initialState,
     reducers: {
-        addTodoRequest (state: TodoState, payload) {
+        addTodoRequest : (state: TodoState, payload) =>{
             alert('2:리듀서 내부')
             state.loading = true;
+            
         },
         addTodoSuccess (state: TodoState, {payload}){
             state.data = [...state.data, payload]
