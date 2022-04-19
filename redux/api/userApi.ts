@@ -14,12 +14,12 @@ export interface UserType{
     birth: string;
     address: string;
 }
-export const postUser = async (payload: 
+export const joinApi = async (payload: 
     {userid:string, password:string, email:string, 
      name:string, phone:string, birth:string, address:string}) => {
          try{
             const response : AxiosResponse<unknown, UserType[]> = 
-            await axios.post(`${SERVER}/api/user/signup`,payload, {headers})
+            await axios.post(`${SERVER}/api/user/join`,payload, {headers})
             alert('진행 5 : 응답성공 '+JSON.stringify(response.data))
             return response.data
          }catch(err){
