@@ -5,15 +5,15 @@ const headers = {
     Authorization: "JWT fefege...",
 }
 export interface TodoType{
-    userid: string,
-    task: string,
-    completed: string; // value is T , F
+   
+    task: string
+    
 }
-export const addTodo = async (
-    payload: {userid: string, task: string, completed: string}) => {
+export const addTodoApi = async (
+    payload: { task: string}) => {
         try{
             const response: AxiosResponse<unknown, TodoType[]>=
-            await axios.post(`${SERVER}/api/todo/addTodo`, payload, { headers })
+            await axios.post(`${SERVER}/api/todo/add`, payload, { headers })
             alert(`진행 5: 응답 성공 + ${JSON.stringify(response.data)}`)
             return response.data
         }catch(err){
