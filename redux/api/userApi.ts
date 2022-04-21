@@ -31,7 +31,9 @@ export const loginApi = async (payload:
         try{
         const response : AxiosResponse<unknown, UserType[]> = 
         await axios.post(`${SERVER}/user/login`,payload, {headers})
-        alert('진행 5 : 응답성공 '+JSON.stringify(response.data))
+        const loginUser = JSON.stringify(response.data)
+        alert('진행 5 : 응답성공 '+loginUser)
+        localStorage.setItem("loginUser",loginUser)
         return response.data
         }catch(err){
         return err;

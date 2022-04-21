@@ -42,6 +42,7 @@ function* login(login: UserLoginType){
         alert(' 진행 3: saga내부 login 요청  '+ JSON.stringify(login))
         const response : UserLoginSuccessType = yield loginApi(login.payload)
         yield put(userActions.loginSuccess(response))
+        window.location.href = '/'
     }catch(error){
          alert('진행 3: saga내부 login 실패  ') 
          yield put(userActions.loginFailure(error))
