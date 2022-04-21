@@ -21,15 +21,18 @@ export default function Nav(){
   
   return (
     <table className={tableStyles.table}>
-      <tr>
-      <td><SubMenu title={"기본"} urls={basicUrls} subTitles={basicSubTitle}/>
-        <SubMenu title={"사용자"} urls={userUrls} subTitles={userSubTitle}/>
-        <SubMenu title={"투두"} urls={todoUrls} subTitles={todoSubTitle}/>
-        <SubMenu title={"게임"} urls={gameUrls} subTitles={gameSubTitle}/>
-        <SubMenu title={"팀"} urls={teamUrls} subTitles={teamSubTitle}/>
-        <SubMenu title={"게시판"} urls={boardUrls} subTitles={boardSubTitle}/>
-        </td>
-      </tr>
+      <tbody>
+        <tr>
+            <td>
+              <SubMenu title={"기본"} urls={basicUrls} subTitles={basicSubTitle}/>
+              <SubMenu title={"사용자"} urls={userUrls} subTitles={userSubTitle}/>
+              <SubMenu title={"투두"} urls={todoUrls} subTitles={todoSubTitle}/>
+              <SubMenu title={"게임"} urls={gameUrls} subTitles={gameSubTitle}/>
+              <SubMenu title={"팀"} urls={teamUrls} subTitles={teamSubTitle}/>
+              <SubMenu title={"게시판"} urls={boardUrls} subTitles={boardSubTitle}/>
+            </td>
+        </tr>
+      </tbody>
     </table>
   );
 }
@@ -61,7 +64,7 @@ const SubMenu = (props) => {
         }}
       >
          {props.urls.map(function(url, i){
-            return <MenuItem onClick={handleClose}><Link href={url} key={i}>{props.subTitles[i]}</Link></MenuItem>
+            return <MenuItem onClick={handleClose} key={i}><Link href={url} >{props.subTitles[i]}</Link></MenuItem>
           })}
       </Menu></>
 }
