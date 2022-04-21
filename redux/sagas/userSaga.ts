@@ -46,6 +46,7 @@ function* login(login: UserLoginType){
     }catch(error){
          alert('진행 3: saga내부 login 실패  ') 
          yield put(userActions.loginFailure(error))
+         window.location.href = '/user/login'
     }
 }
 export function* watchJoin(){
